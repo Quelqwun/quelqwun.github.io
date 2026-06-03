@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebSpace Studio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="dark">
+
+  <header class="titlebar">
+    <div class="logo">
+      <img src="https://i.postimg.cc/rwCRnnmh/4efe624e5b9a92f321f31240dc4f678b.png" alt="WebSpace Studio">
+      <span data-i18n="appName">WebSpace Studio</span>
+    </div>
+    <button class="toolbar-btn" id="btn-new-file" data-i18n-title="newFile" data-i18n="newFile">+ New File</button>
+    <button class="toolbar-btn" id="btn-save" data-i18n-title="save" data-i18n="save">Save</button>
+    <button class="toolbar-btn primary" id="btn-run" data-i18n-title="run" data-i18n="run">▶ Run</button>
+    <button class="toolbar-btn" id="btn-format" data-i18n-title="format" data-i18n="format">Format</button>
+    <button class="toolbar-btn" id="btn-import" data-i18n-title="import" data-i18n="import">Import</button>
+    <button class="toolbar-btn" id="btn-export" data-i18n-title="export" data-i18n="export">Export</button>
+    <div class="dropdown-wrap" id="lang-dropdown-wrap">
+      <button class="toolbar-btn" id="btn-lang" data-i18n-title="uiLang" type="button">
+        <span data-i18n="language">Language</span>
+        <span class="lang-current" id="lang-current-label">Français</span> ▾
+      </button>
+      <div class="lang-dropdown" id="lang-dropdown">
+        <div class="lang-dropdown-search">
+          <input type="text" id="lang-search" data-i18n-placeholder="searchLang" placeholder="Search a language…" autocomplete="off">
+        </div>
+        <ul class="lang-list" id="lang-list"></ul>
+      </div>
+    </div>
+    <input type="file" id="import-input" accept=".json,application/json" hidden>
+    <div class="toolbar-spacer"></div>
+    <button class="toolbar-btn" id="btn-console" data-i18n-title="console" data-i18n="console">Console</button>
+    <button class="toolbar-btn" id="btn-theme" data-i18n-title="theme" data-i18n="theme">Theme</button>
+  </header>
+
+  <div class="main">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <span data-i18n="explorer">Explorer</span>
+        <button id="btn-new-file-side" data-i18n-title="newFileSide">+</button>
+      </div>
+      <div class="file-tree" id="file-tree"></div>
+    </aside>
+
+    <div class="resize-handle" id="resize-sidebar"></div>
+
+    <section class="editor-area">
+      <div class="tabs" id="tabs"></div>
+      <div class="editor-container">
+        <div id="monaco-editor"></div>
+        <div class="welcome" id="welcome">
+          <h2 data-i18n="welcomeTitle">WebSpace Studio</h2>
+          <p data-i18n="welcomeHint">Open a file from the explorer or create a new one</p>
+          <p data-i18n="welcomeShortcuts"><kbd>Ctrl</kbd> + <kbd>N</kbd> new &nbsp; <kbd>Ctrl</kbd> + <kbd>S</kbd> save &nbsp; <kbd>F5</kbd> run</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="resize-handle" id="resize-preview"></div>
+
+    <aside class="preview-panel" id="preview-panel">
+      <iframe id="preview-frame" sandbox="allow-scripts allow-same-origin allow-modals allow-forms"></iframe>
+    </aside>
+  </div>
+
+  <div class="bottom-panel" id="bottom-panel">
+    <div class="panel-tabs">
+      <button class="panel-tab active" data-panel="console" data-i18n="console">Console</button>
+      <button class="panel-tab" data-panel="problems" data-i18n="problems">Problems</button>
+    </div>
+    <div class="console-output" id="console-output"></div>
+  </div>
+
+  <footer class="statusbar">
+    <span id="status-file" data-i18n="noFileOpen">No file open</span>
+    <span id="status-syntax"></span>
+    <span id="status-position">Ln 1, Col 1</span>
+    <span style="margin-left:auto" id="status-saved" data-i18n="saved">Saved</span>
+  </footer>
+
+  <div class="context-menu" id="context-menu">
+    <button data-action="open" data-i18n="ctxOpen">Open</button>
+    <button data-action="rename" data-i18n="ctxRename">Rename</button>
+    <button data-action="delete" data-i18n="ctxDelete">Delete</button>
+    <div class="divider"></div>
+    <button data-action="new" data-i18n="ctxNew">New File</button>
+  </div>
+
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal">
+      <h3 id="modal-title" data-i18n="modalNewFile">New File</h3>
+      <input type="text" id="modal-input" data-i18n-placeholder="modalPlaceholder" placeholder="filename.html" autocomplete="off">
+      <div class="modal-actions">
+        <button id="modal-cancel" data-i18n="cancel">Cancel</button>
+        <button class="primary" id="modal-confirm" data-i18n="create">Create</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs/loader.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
