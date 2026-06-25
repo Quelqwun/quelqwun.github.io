@@ -1,109 +1,41 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WebSpace Studio</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="manifest" href="https://progressier.app/Hc1ToAHyCvdaEGYVy42H/progressier.json"/>
-  <script defer src="https://progressier.app/Hc1ToAHyCvdaEGYVy42H/script.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentions Légales & CGU - Service Auto-Poster TikTok</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #2d3436; max-width: 900px; margin: 40px auto; padding: 20px; background-color: #f9f9f9; }
+        .container { background: #fff; padding: 40px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        h1 { color: #000; border-bottom: 2px solid #fe2c55; padding-bottom: 10px; }
+        h2 { color: #fe2c55; margin-top: 30px; }
+        footer { margin-top: 50px; font-size: 0.8em; text-align: center; color: #636e72; }
+    </style>
 </head>
-<body data-theme="dark">
+<body>
+    <div class="container">
+        <h1>Mentions Légales et Conditions d'Utilisation</h1>
+        
+        <h2>1. Mentions Légales</h2>
+        <p>Le présent site est édité par : [Votre Nom ou Nom de votre Société]<br>
+        Adresse : [Adresse complète]<br>
+        Contact : [Email de contact]<br>
+        Directeur de la publication : [Nom du dirigeant]</p>
 
-  <header class="titlebar">
-    <div class="logo">
-      <img src="https://i.postimg.cc/rwCRnnmh/4efe624e5b9a92f321f31240dc4f678b.png" alt="WebSpace Studio">
-      <span data-i18n="appName">WebSpace Studio</span>
+        <h2>2. Objet du service</h2>
+        <p>Le service [Nom du Projet] propose une plateforme logicielle permettant l'automatisation de la publication de contenus vidéo sur la plateforme TikTok via son API officielle.</p>
+
+        <h2>3. Conditions Générales d'Utilisation (CGU)</h2>
+        <p>L'accès au service est conditionné par l'acceptation sans réserve des présentes conditions. L'utilisateur garantit détenir l'intégralité des droits de propriété intellectuelle sur les contenus publiés.</p>
+
+        <h2>4. Limitation de Responsabilité</h2>
+        <p>Le service est fourni "en l'état". [Nom du Projet] ne saurait être tenu responsable en cas de suspension, bannissement ou restriction de compte par TikTok, ni d'une interruption du service liée à une modification de l'API par la plateforme tierce.</p>
+
+        <h2>5. Données Personnelles</h2>
+        <p>Conformément au RGPD, les seules données traitées sont les jetons d'authentification (tokens) nécessaires à la connexion API. Aucune donnée n'est cédée à des tiers.</p>
     </div>
-    <button class="toolbar-btn" id="btn-new-file" data-i18n-title="newFile" data-i18n="newFile">+ New File</button>
-    <button class="toolbar-btn" id="btn-save" data-i18n-title="save" data-i18n="save">Save</button>
-    <button class="toolbar-btn primary" id="btn-run" data-i18n-title="run" data-i18n="run">▶ Run</button>
-    <button class="toolbar-btn" id="btn-format" data-i18n-title="format" data-i18n="format">Format</button>
-    <button class="toolbar-btn" id="btn-import" data-i18n-title="import" data-i18n="import">Import</button>
-    <button class="toolbar-btn" id="btn-export" data-i18n-title="export" data-i18n="export">Export</button>
-    <div class="dropdown-wrap" id="lang-dropdown-wrap">
-      <button class="toolbar-btn" id="btn-lang" data-i18n-title="uiLang" type="button">
-        <span data-i18n="language">Language</span>
-        <span class="lang-current" id="lang-current-label">Français</span> ▾
-      </button>
-      <div class="lang-dropdown" id="lang-dropdown">
-        <div class="lang-dropdown-search">
-          <input type="text" id="lang-search" data-i18n-placeholder="searchLang" placeholder="Search a language…" autocomplete="off">
-        </div>
-        <ul class="lang-list" id="lang-list"></ul>
-      </div>
-    </div>
-    <input type="file" id="import-input" accept=".json,application/json" hidden>
-    <div class="toolbar-spacer"></div>
-    <button class="toolbar-btn" id="btn-console" data-i18n-title="console" data-i18n="console">Console</button>
-    <button class="toolbar-btn" id="btn-theme" data-i18n-title="theme" data-i18n="theme">Theme</button>
-  </header>
-
-  <div class="main">
-    <aside class="sidebar" id="sidebar">
-      <div class="sidebar-header">
-        <span data-i18n="explorer">Explorer</span>
-        <button id="btn-new-file-side" data-i18n-title="newFileSide">+</button>
-      </div>
-      <div class="file-tree" id="file-tree"></div>
-    </aside>
-
-    <div class="resize-handle" id="resize-sidebar"></div>
-
-    <section class="editor-area">
-      <div class="tabs" id="tabs"></div>
-      <div class="editor-container">
-        <div id="monaco-editor"></div>
-        <div class="welcome" id="welcome">
-          <h2 data-i18n="welcomeTitle">WebSpace Studio</h2>
-          <p data-i18n="welcomeHint">Open a file from the explorer or create a new one</p>
-          <p data-i18n="welcomeShortcuts"><kbd>Ctrl</kbd> + <kbd>N</kbd> new &nbsp; <kbd>Ctrl</kbd> + <kbd>S</kbd> save &nbsp; <kbd>F5</kbd> run</p>
-        </div>
-      </div>
-    </section>
-
-    <div class="resize-handle" id="resize-preview"></div>
-
-    <aside class="preview-panel" id="preview-panel">
-      <iframe id="preview-frame" sandbox="allow-scripts allow-same-origin allow-modals allow-forms"></iframe>
-    </aside>
-  </div>
-
-  <div class="bottom-panel" id="bottom-panel">
-    <div class="panel-tabs">
-      <button class="panel-tab active" data-panel="console" data-i18n="console">Console</button>
-      <button class="panel-tab" data-panel="problems" data-i18n="problems">Problems</button>
-    </div>
-    <div class="console-output" id="console-output"></div>
-  </div>
-
-  <footer class="statusbar">
-    <span id="status-file" data-i18n="noFileOpen">No file open</span>
-    <span id="status-syntax"></span>
-    <span id="status-position">Ln 1, Col 1</span>
-    <span style="margin-left:auto" id="status-saved" data-i18n="saved">Saved</span>
-  </footer>
-
-  <div class="context-menu" id="context-menu">
-    <button data-action="open" data-i18n="ctxOpen">Open</button>
-    <button data-action="rename" data-i18n="ctxRename">Rename</button>
-    <button data-action="delete" data-i18n="ctxDelete">Delete</button>
-    <div class="divider"></div>
-    <button data-action="new" data-i18n="ctxNew">New File</button>
-  </div>
-
-  <div class="modal-overlay" id="modal-overlay">
-    <div class="modal">
-      <h3 id="modal-title" data-i18n="modalNewFile">New File</h3>
-      <input type="text" id="modal-input" data-i18n-placeholder="modalPlaceholder" placeholder="filename.html" autocomplete="off">
-      <div class="modal-actions">
-        <button id="modal-cancel" data-i18n="cancel">Cancel</button>
-        <button class="primary" id="modal-confirm" data-i18n="create">Create</button>
-      </div>
-    </div>
-  </div>
-
-  <script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs/loader.js"></script>
-  <script src="script.js"></script>
+    <footer>
+        &copy; 2026 [Nom du Projet]. Tous droits réservés.
+    </footer>
 </body>
 </html>
